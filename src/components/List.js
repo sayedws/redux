@@ -3,13 +3,17 @@ import { useSelector } from 'react-redux'
 import TaskCard from './TaskCard'
 
 const List = () => {
-    const {todos}=useSelector(state=>state)
+    const {todos , filter}=useSelector(state=>state)
 
 
   return (
     <div>
         {
-            React.Children.toArray(todos.map(el=><TaskCard task={el}/> ))
+        filter
+        ? todos
+            .filter((el) => el.isDone === false)
+            .map((el) => <TaskCard key={el.id} task={el} />)
+        : todos.map((el) => <TaskCard key={el.id} task={el} />)
         }
     </div>
   

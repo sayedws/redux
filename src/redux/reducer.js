@@ -1,9 +1,10 @@
-import { ADD_NEW_TASK, COMPLETE_TASK, DELETE_TASK, EDIT_TASK } from "./actiontype"
+import { ADD_NEW_TASK, COMPLETE_TASK, DELETE_TASK, EDIT_TASK, FILTER_TASK } from "./actiontype"
 
 
 
 const init={
-    todos:[]
+    todos:[],
+    filter: false,
 
 };
 
@@ -28,6 +29,10 @@ export const taskReducer=(state=init,{type,payload})=>{
                 return{
                     ...state,todos:state.todos.map(el=>el.id===payload.id?payload:el)
                 }
+                case FILTER_TASK:
+                    return { ...state, filter: !state.filter };
+                
+                
         default:
 
         return state

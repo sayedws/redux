@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Modal from 'react-modal';
 import { useDispatch } from 'react-redux';
+import { handleEdit } from '../redux/action';
 
 
 const EditTask = ({task}) => {
@@ -9,8 +10,10 @@ const EditTask = ({task}) => {
     const handleSubmit=(e)=>{
         e.preventDefault();
         const editedOne={
-            id:task.id,todoTask,isDone:task.isDone
+            id:task.id,action,isDone:task.isDone
         }
+        dispatch(handleEdit(editedOne))
+        closeModal()
 
     }
     const customStyles = {
@@ -50,11 +53,11 @@ const EditTask = ({task}) => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-<form>
+<form onSubmit={handleSubmit}>
                 <input type="text" value={action} onChange={e=>setAction(e.target.value)} />
                 <div>
-                    <button>confirme</button>
-                    <button>cancel</button>
+                    <button type='submit'>confirme</button>
+                    <button onClick={closeModal}>cancel</button>
                 </div>
             </form>
       </Modal>

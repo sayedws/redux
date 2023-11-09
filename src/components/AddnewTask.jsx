@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { handleAdd } from '../redux/action';
+import { filterTask, handleAdd } from '../redux/action';
 
 const AddnewTask = () => {
     const [action, setAction] = useState("hello3");
@@ -22,6 +22,9 @@ e.preventDefault()
             <input type="text" value={action} onChange={e=>setAction(e.target.value)} />
             <button type='submit' >Add</button>
         </form>
+        <button onClick={() => dispatch(filterTask())}>
+        {filterTask ? "Show All" : "Show Uncompleted"}
+      </button>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import EditTask from "../components/EditTask"
-import { ADD_NEW_TASK, COMPLETE_TASK, DELETE_TASK } from "./actiontype"
+import { ADD_NEW_TASK, COMPLETE_TASK, DELETE_TASK, EDIT_TASK, FILTER_TASK } from "./actiontype"
 
 
 export const handleAdd=(newTask)=>{
@@ -26,7 +26,10 @@ export const handleComplete=(THEID)=>{
 }
 export const handleEdit=(editedTask)=>{
     return{
-        type:EditTask,
+        type:EDIT_TASK,
         payload:editedTask
     }
 }
+export const filterTask = () => {
+    return { type: FILTER_TASK };
+  };

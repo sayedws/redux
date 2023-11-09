@@ -7,11 +7,11 @@ import EditTask from './EditTask';
 const TaskCard = ({task}) => {
     const dispatch=useDispatch();
 
-  return (
+  return(
     <div>
         <h1>{task.action}</h1>
         <button onClick={()=>dispatch(handleDelete(task.id))}>Delete</button>
-        <button  onClick={()=>dispatch(handleComplete(task.id))} >Complete</button>
+        <button  onClick={()=>dispatch(handleComplete(task.id))} >{task.isDone?"Undo":"Complete"}</button>
         <EditTask task={task}/>
         </div>
   )
